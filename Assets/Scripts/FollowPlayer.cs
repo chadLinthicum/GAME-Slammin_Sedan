@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour //PlayerController inherits from MonoBehavior, which is a class that's applied to all difference object we create
 {
-    public GameObject player;
+    public GameObject player; // Leave public as this is referenced in the camera
     private Vector3 offset = new Vector3(0, 5, -8);
 
     // Start is called before the first frame update

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour //PlayerController inherits from MonoBehavior, which is a class that's applied to all difference object we create
 {
-    // Private Variables
-    private float speed = 5.0f;
-    private float turnSpeed = 25.0f;
-    private float horizonalInput;
-    private float forwardInput;
+    // public Variables
+    public float speed = 5.0f;
+    public float turnSpeed = 25.0f;
+    public float horizonalInput;
+    public float forwardInput;
     
     // Start is called before the first frame update
     void Start()

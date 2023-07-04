@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour //PlayerController inherits from M
 
     public AudioClip backgroundMusic;
     public AudioClip explosionSound;
+    public AudioClip increaseMPHSound;
     public AudioSource audioSource;
 
     void Start()
@@ -43,8 +44,8 @@ public class PlayerController : MonoBehaviour //PlayerController inherits from M
         uiRecommendation.SetActive(false);
         uiScoreNumber.enabled = false;
 
-        audioSource.clip = backgroundMusic;
-        audioSource.loop = true;
+        //audioSource.clip = backgroundMusic;
+        //audioSource.loop = true;
         //audioSource.Play();
     }
 
@@ -57,6 +58,11 @@ public class PlayerController : MonoBehaviour //PlayerController inherits from M
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            if (onRamp)
+            {
+                audioSource.clip = increaseMPHSound;
+                audioSource.Play();
+            }
 
             isTimerRunning = true;
             if (onRamp)

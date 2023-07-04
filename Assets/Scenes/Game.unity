@@ -421,6 +421,7 @@ MonoBehaviour:
   testParticleSystem: {fileID: 576342679}
   backgroundMusic: {fileID: 8300000, guid: fa0449b3ce6e06e49a3193f2b8dde9f9, type: 3}
   explosionSound: {fileID: 8300000, guid: fc96116dc3c141440aabb5605744fea2, type: 3}
+  increaseMPHSound: {fileID: 8300000, guid: 1552692ea72704a318dd896eedb1b81a, type: 3}
   audioSource: {fileID: 1367251125}
 --- !u!4 &253542370 stripped
 Transform:

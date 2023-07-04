@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 133479494}
   - component: {fileID: 133479493}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: Bullseye
   m_TagString: Bullseye
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -405,7 +405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99aa6cae9bc41a14ea475da82abb8b2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MPH: 76
+  MPH: 74
   MPH_Text: {fileID: 1777510830}
   timerText: {fileID: 2021298550}
   uiBlack: {fileID: 1188050600}

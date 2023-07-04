@@ -487,8 +487,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.97292536, z: 4.211635}
-  m_Center: {x: 0, y: 0.48215583, z: -0.021639153}
+  m_Size: {x: 1, y: 0.94327605, z: 3.621432}
+  m_Center: {x: 0, y: 0.4969805, z: 0.27345926}
 --- !u!54 &253542368
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -526,6 +526,8 @@ MonoBehaviour:
   timerText: {fileID: 2021298550}
   testParticleSystem: {fileID: 576342679}
   audioSource: {fileID: 45928376}
+  music: {fileID: 8300000, guid: fa0449b3ce6e06e49a3193f2b8dde9f9, type: 3}
+  explosion: {fileID: 8300000, guid: fc96116dc3c141440aabb5605744fea2, type: 3}
 --- !u!850595691 &481223275
 LightingSettings:
   m_ObjectHideFlags: 0

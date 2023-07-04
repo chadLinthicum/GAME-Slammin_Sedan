@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour //PlayerController inherits from M
 
     [SerializeField] private ParticleSystem testParticleSystem = default;
 
+    public AudioSource audioSource;
+
     void Start()
     {
 
@@ -78,6 +80,7 @@ public class PlayerController : MonoBehaviour //PlayerController inherits from M
             StopTimer();
             Destroy(gameObject);
             testParticleSystem.Play();
+            audioSource.Play();
         }
         if (collision.gameObject.CompareTag("End"))
         {

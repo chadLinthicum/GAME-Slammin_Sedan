@@ -168,8 +168,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 32.90734, y: 32.884308, z: 1}
-  m_Center: {x: -3.7504158, y: 7.9465523, z: 0}
+  m_Size: {x: 32.90734, y: 32.884308, z: 1.7281494}
+  m_Center: {x: -3.7504158, y: 7.9465523, z: 1.4095154}
 --- !u!1 &133479491
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,9 +181,10 @@ GameObject:
   - component: {fileID: 133479492}
   - component: {fileID: 133479495}
   - component: {fileID: 133479494}
+  - component: {fileID: 133479493}
   m_Layer: 0
   m_Name: Cylinder
-  m_TagString: Untagged
+  m_TagString: Bullseye
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -196,12 +197,26 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 133479491}
   m_LocalRotation: {x: -0.70681924, y: -0.020164615, z: 0.020164615, w: 0.70681924}
-  m_LocalPosition: {x: -4.2, y: 8.255843, z: 0.5715027}
-  m_LocalScale: {x: 8.895101, y: 0.22165388, z: 8.894749}
+  m_LocalPosition: {x: -4.2, y: 8.255843, z: 0.26}
+  m_LocalScale: {x: 12.060867, y: 0.3005405, z: 12.06039}
   m_Children: []
   m_Father: {fileID: 102827657}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -86.732, y: -90, z: 90}
+--- !u!136 &133479493
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 133479491}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.50000024
+  m_Height: 2.0000007
+  m_Direction: 1
+  m_Center: {x: 0.000008232892, y: -1.6951997e-14, z: -0.000004529953}
 --- !u!23 &133479494
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -390,11 +405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99aa6cae9bc41a14ea475da82abb8b2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  turnSpeed: 25
-  horizonalInput: 0
-  forwardInput: 0
-  MPH: 90
+  MPH: 76
   MPH_Text: {fileID: 1777510830}
   timerText: {fileID: 2021298550}
   uiBlack: {fileID: 1188050600}
@@ -403,6 +414,9 @@ MonoBehaviour:
   uiBullseye: {fileID: 472133822}
   uiScore: {fileID: 500836721}
   uiButtonGIF: {fileID: 535877847}
+  uiTargetText: {fileID: 840382428}
+  uiBullseyeText: {fileID: 472133824}
+  uiScoreNumber: {fileID: 1308946884}
   testParticleSystem: {fileID: 576342679}
   backgroundMusic: {fileID: 8300000, guid: fa0449b3ce6e06e49a3193f2b8dde9f9, type: 3}
   explosionSound: {fileID: 8300000, guid: fc96116dc3c141440aabb5605744fea2, type: 3}
@@ -489,7 +503,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 40.9, y: 39.8}
+  m_AnchoredPosition: {x: 0.3, y: 39.8}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &472133824
@@ -519,7 +533,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -5932,7 +5946,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 48.6, y: 55.8}
+  m_AnchoredPosition: {x: -0.1, y: 55.8}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &840382428
@@ -5962,7 +5976,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -6877,7 +6891,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 36.7, y: -8.2}
+  m_AnchoredPosition: {x: -0.6, y: -10.5}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1308946884
@@ -6902,12 +6916,12 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 24
+    m_FontSize: 26
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 2
-    m_MaxSize: 40
-    m_Alignment: 0
+    m_MinSize: 0
+    m_MaxSize: 267
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0

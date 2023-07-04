@@ -6,12 +6,7 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour //PlayerController inherits from MonoBehavior, which is a class that's applied to all difference object we create
 {
-    public float speed = 5.0f;
-    public float turnSpeed = 25.0f;
-    public float horizonalInput;
-    public float forwardInput;
-
-    public float MPH;
+    public int MPH;
     public Text MPH_Text;
     public Text timerText;
     private float elapsedTime = 0f;
@@ -22,6 +17,12 @@ public class PlayerController : MonoBehaviour //PlayerController inherits from M
     public GameObject uiBullseye;
     public GameObject uiScore;
     public GameObject uiButtonGIF;
+
+    public Text uiTargetText;
+    public Text uiBullseyeText;
+
+    public Text uiScoreNumber;
+    private int score = 0;
 
     private bool onRamp = true;
 
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour //PlayerController inherits from M
         uiTarget.SetActive(false);
         uiBullseye.SetActive(false);
         uiScore.SetActive(false);
+        uiScoreNumber.enabled = false;
 
         audioSource.clip = backgroundMusic;
         audioSource.loop = true;
@@ -82,7 +84,38 @@ public class PlayerController : MonoBehaviour //PlayerController inherits from M
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Destroy") || collision.gameObject.CompareTag("Target"))
+        if (collision.gameObject.CompareTag("Destroy"))
+        {
+            score = MPH * 1200;
+        }
+
+        if (collision.gameObject.CompareTag("Target"))
+        {
+            Debug.Log("Target");
+            uiTargetText.text = "Target: Yes";
+            score = MPH * 1500;
+        }
+
+        if (collision.gameObject.CompareTag("Bullseye"))
+        {
+            Debug.Log("Bullseye");
+            uiTargetText.text = "Target: Yes";
+            uiBullseyeText.text = "Bullseye: Yes";
+            score = MPH * 5000;
+        }
+
+
+
+        if (collision.gameObject.CompareTag("End"))
+        {
+            onRamp = false;
+        }
+
+
+
+
+
+        if (collision.gameObject.CompareTag("Destroy") || collision.gameObject.CompareTag("Target") || collision.gameObject.CompareTag("Bullseye"))
         {
             StopTimer();
             Destroy(gameObject);
@@ -94,12 +127,11 @@ public class PlayerController : MonoBehaviour //PlayerController inherits from M
             uiBullseye.SetActive(true);
             uiScore.SetActive(true);
             uiButtonGIF.SetActive(false);
+            uiScoreNumber.enabled = true;
+            uiScoreNumber.text = score.ToString();
+        }
 
-        }
-        if (collision.gameObject.CompareTag("End"))
-        {
-            onRamp = false;
-        }
+
     }
     public void StopTimer()
     {

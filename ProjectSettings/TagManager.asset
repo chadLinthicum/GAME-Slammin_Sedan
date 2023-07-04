@@ -9,6 +9,7 @@ TagManager:
   - Destroy
   - UI_Black
   - Bullseye
+  - PRESS SPACE
   layers:
   - Default
   - TransparentFX

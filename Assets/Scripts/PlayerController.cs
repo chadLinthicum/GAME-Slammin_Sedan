@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour //PlayerController inherits from M
     public GameObject uiBullseye;
     public GameObject uiScore;
     public GameObject uiButtonGIF;
+    public GameObject uiRecommendation;
 
     public Text uiTargetText;
     public Text uiBullseyeText;
@@ -39,6 +40,7 @@ public class PlayerController : MonoBehaviour //PlayerController inherits from M
         uiTarget.SetActive(false);
         uiBullseye.SetActive(false);
         uiScore.SetActive(false);
+        uiRecommendation.SetActive(false);
         uiScoreNumber.enabled = false;
 
         audioSource.clip = backgroundMusic;
@@ -86,14 +88,8 @@ public class PlayerController : MonoBehaviour //PlayerController inherits from M
     {
         if (collision.gameObject.CompareTag("Destroy"))
         {
+            Debug.Log("Destroy");
             score = MPH * 1200;
-        }
-
-        if (collision.gameObject.CompareTag("Target"))
-        {
-            Debug.Log("Target");
-            uiTargetText.text = "Target: Yes";
-            score = MPH * 1500;
         }
 
         if (collision.gameObject.CompareTag("Bullseye"))
@@ -104,7 +100,12 @@ public class PlayerController : MonoBehaviour //PlayerController inherits from M
             score = MPH * 5000;
         }
 
-
+        if (collision.gameObject.CompareTag("Target"))
+        {
+            Debug.Log("Target");
+            uiTargetText.text = "Target: Yes";
+            score = MPH * 1500;
+        }
 
         if (collision.gameObject.CompareTag("End"))
         {
@@ -126,6 +127,7 @@ public class PlayerController : MonoBehaviour //PlayerController inherits from M
             uiTarget.SetActive(true);
             uiBullseye.SetActive(true);
             uiScore.SetActive(true);
+            uiRecommendation.SetActive(true);
             uiButtonGIF.SetActive(false);
             uiScoreNumber.enabled = true;
             uiScoreNumber.text = score.ToString();

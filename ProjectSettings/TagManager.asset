@@ -4,7 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - HeightTower
+  - Target
+  - End
+  - Destory
   layers:
   - Default
   - TransparentFX

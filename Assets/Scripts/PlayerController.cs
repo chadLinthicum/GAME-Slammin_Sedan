@@ -10,47 +10,53 @@ public class PlayerController : MonoBehaviour //PlayerController inherits from M
     public float turnSpeed = 25.0f;
     public float horizonalInput;
     public float forwardInput;
-    public float spaceBarCount;
-    public Text spaceBarCountText;
+    public float MPH;
+    public Text MPH_Text;
 
-    // Start is called before the first frame update
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("HeightTower"))
-        {
-            Destroy(gameObject);
-        }
-    }
+    public Text timerText;
+    private float elapsedTime = 0f;
+    private bool isTimerRunning = false;
+
+    private bool onRamp = true;
+
     void Start()
     {
 
     }
 
-    // Update is called once per frame
     void Update()
     {
+        if (isTimerRunning)
+        {
+            UpdateTimer();
+        }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            spaceBarCount++;
-            if (spaceBarCount == 0)
+            isTimerRunning = true;
+            if (onRamp)
             {
-                spaceBarCountText.text = "MPH: 000";
-            }
-            else if (spaceBarCount != 0 && spaceBarCount < 10)
-            {
-                spaceBarCountText.text = "MPH: 00" + spaceBarCount;
-            }
-            else
-            {
-                spaceBarCountText.text = "MPH: " + spaceBarCount;
+                MPH++;
+                if (MPH == 0)
+                {
+                    MPH_Text.text = "000";
+                }
+                else if (MPH != 0 && MPH < 10)
+                {
+                    MPH_Text.text = "00" + MPH;
+                }
+                else if (MPH >= 10 && MPH < 100)
+                {
+                    MPH_Text.text = "0" + MPH;
+                }
+                else
+                {
+                    MPH_Text.text = MPH.ToString(); ;
+                }
             }
         }
 
-
-
-        transform.Translate(Vector3.forward * Time.deltaTime * spaceBarCount); //At speed per sec
-
-
+        transform.Translate(Vector3.forward * Time.deltaTime * MPH); //At speed per sec
         // This is where we get player input 
         //horizonalInput = Input.GetAxis("Horizontal");
         //forwardInput = Input.GetAxis("Vertical");
@@ -61,5 +67,30 @@ public class PlayerController : MonoBehaviour //PlayerController inherits from M
         // Rotates the car based on horizontal input
         //transform.Translate(Vector3.right * Time.deltaTime * turnSpeed * horizonalInput);
         //transform.Rotate(Vector3.up, Time.deltaTime * turnSpeed);
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Destroy") || collision.gameObject.CompareTag("Target"))
+        {
+            StopTimer();
+            Destroy(gameObject);
+        }
+        if (collision.gameObject.CompareTag("End"))
+        {
+            onRamp = false;
+        }
+    }
+
+    void UpdateTimer()
+    {
+        elapsedTime += Time.deltaTime;
+        int minutes = Mathf.FloorToInt(elapsedTime / 60f);
+        int seconds = Mathf.FloorToInt(elapsedTime % 60f);
+        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+
+    public void StopTimer()
+    {
+        isTimerRunning = false;
     }
 }

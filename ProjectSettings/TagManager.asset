@@ -6,7 +6,7 @@ TagManager:
   tags:
   - Target
   - End
-  - Destory
+  - Destroy
   layers:
   - Default
   - TransparentFX

@@ -10,14 +10,16 @@ public class PlayerController : MonoBehaviour //PlayerController inherits from M
     public float turnSpeed = 25.0f;
     public float horizonalInput;
     public float forwardInput;
+
     public float MPH;
     public Text MPH_Text;
-
     public Text timerText;
     private float elapsedTime = 0f;
     private bool isTimerRunning = false;
 
     private bool onRamp = true;
+
+    [SerializeField] private ParticleSystem testParticleSystem = default;
 
     void Start()
     {
@@ -33,6 +35,7 @@ public class PlayerController : MonoBehaviour //PlayerController inherits from M
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
+
             isTimerRunning = true;
             if (onRamp)
             {
@@ -74,6 +77,7 @@ public class PlayerController : MonoBehaviour //PlayerController inherits from M
         {
             StopTimer();
             Destroy(gameObject);
+            testParticleSystem.Play();
         }
         if (collision.gameObject.CompareTag("End"))
         {

@@ -16,7 +16,9 @@ public class CarExplosion : MonoBehaviour //PlayerController inherits from MonoB
     // Update is called once per frame
     void LateUpdate()
     {
-        // Offset the camera behind the player by adding to the player's position
-        transform.position = player.transform.position + offset;
+        if (player != null)
+        {
+            transform.position = player.transform.position + offset;
+        }
     }
 }

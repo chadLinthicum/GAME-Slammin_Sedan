@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class PlayerController : MonoBehaviour //PlayerController inherits from MonoBehavior, which is a class that's applied to all difference object we create
 {
-    // public Variables
     public float speed = 5.0f;
     public float turnSpeed = 25.0f;
     public float horizonalInput;
@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour //PlayerController inherits from M
     {
         audioSource.clip = backgroundMusic;
         audioSource.loop = true;
-        audioSource.Play();
+        //audioSource.Play();
     }
 
     void Update()
@@ -66,16 +66,7 @@ public class PlayerController : MonoBehaviour //PlayerController inherits from M
         }
 
         transform.Translate(Vector3.forward * Time.deltaTime * MPH); //At speed per sec
-        // This is where we get player input 
-        //horizonalInput = Input.GetAxis("Horizontal");
-        //forwardInput = Input.GetAxis("Vertical");
 
-        // Moves the car forward or backward based on vertical input
-
-
-        // Rotates the car based on horizontal input
-        //transform.Translate(Vector3.right * Time.deltaTime * turnSpeed * horizonalInput);
-        //transform.Rotate(Vector3.up, Time.deltaTime * turnSpeed);
     }
     private void OnCollisionEnter(Collision collision)
     {

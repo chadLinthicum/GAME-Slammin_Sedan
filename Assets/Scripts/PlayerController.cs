@@ -16,6 +16,12 @@ public class PlayerController : MonoBehaviour //PlayerController inherits from M
     public Text timerText;
     private float elapsedTime = 0f;
     private bool isTimerRunning = false;
+    public GameObject uiBlack;
+    public GameObject uiRetry;
+    public GameObject uiTarget;
+    public GameObject uiBullseye;
+    public GameObject uiScore;
+    public GameObject uiButtonGIF;
 
     private bool onRamp = true;
 
@@ -27,6 +33,12 @@ public class PlayerController : MonoBehaviour //PlayerController inherits from M
 
     void Start()
     {
+        uiBlack.SetActive(false);
+        uiRetry.SetActive(false);
+        uiTarget.SetActive(false);
+        uiBullseye.SetActive(false);
+        uiScore.SetActive(false);
+
         audioSource.clip = backgroundMusic;
         audioSource.loop = true;
         //audioSource.Play();
@@ -76,23 +88,28 @@ public class PlayerController : MonoBehaviour //PlayerController inherits from M
             Destroy(gameObject);
             testParticleSystem.Play();
             audioSource.PlayOneShot(explosionSound, 3);
+            uiBlack.SetActive(true);
+            uiRetry.SetActive(true);
+            uiTarget.SetActive(true);
+            uiBullseye.SetActive(true);
+            uiScore.SetActive(true);
+            uiButtonGIF.SetActive(false);
+
         }
         if (collision.gameObject.CompareTag("End"))
         {
             onRamp = false;
         }
     }
-
+    public void StopTimer()
+    {
+        isTimerRunning = false;
+    }
     void UpdateTimer()
     {
         elapsedTime += Time.deltaTime;
         int minutes = Mathf.FloorToInt(elapsedTime / 60f);
         int seconds = Mathf.FloorToInt(elapsedTime % 60f);
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-    }
-
-    public void StopTimer()
-    {
-        isTimerRunning = false;
     }
 }

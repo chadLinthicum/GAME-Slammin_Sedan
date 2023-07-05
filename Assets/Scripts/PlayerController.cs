@@ -118,10 +118,6 @@ public class PlayerController : MonoBehaviour //PlayerController inherits from M
             onRamp = false;
         }
 
-
-
-
-
         if (collision.gameObject.CompareTag("Destroy") || collision.gameObject.CompareTag("Target") || collision.gameObject.CompareTag("Bullseye"))
         {
             StopTimer();
@@ -138,8 +134,6 @@ public class PlayerController : MonoBehaviour //PlayerController inherits from M
             uiScoreNumber.enabled = true;
             uiScoreNumber.text = score.ToString();
         }
-
-
     }
     public void StopTimer()
     {
